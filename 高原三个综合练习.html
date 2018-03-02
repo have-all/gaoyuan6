@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高原三个综合练习</title>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin:0;
+        }
+        img{vertical-align:center;}
+        #Q-nav1{overflow:hidden;}
+        .main{
+            /*margin:0 auto;*/
+            /*margin-top:10px;*/
+            margin:10px auto 0;
+            width:1000px;
+        }
+        .fixed{
+            position:fixed;
+            left:0;
+            top:0;
+        }
+        .img1{
+            position:absolute;
+            top:80px;
+            left:10px;
+        }
+        .img2{
+            position:absolute;
+            top:80px;
+            right:10px;
+        }
+        .top_img{
+            position:fixed;
+            bottom:10px;
+            right:50px;
+            cursor:pointer;
+            display:none;
+        }
+    </style>
+    <script src="gaoyuan.js"></script>
+    <script>
+        window.onload = function(){
+            window.onscroll = function(){
+                //window.onscroll只能用一次，用多了会以最后一个为准。
+                //var定义要写在onscroll里边，要不然无法获取。
+                var top = document.getElementById("top");
+                var height = top.offsetHeight;
+                var qNav = document.getElementById("Q-nav1");
+                var main = document.getElementById("main");
+                if(scroll().top > height){
+                    qNav.className += " fixed";
+                    main.style.paddingTop = qNav.offsetHeight + "px";
+                }
+                else{
+                    qNav.className = "";
+                    main.style.paddingTop = 0;
+                }
+            var img1 = document.getElementsByClassName("img1")[0];
+            var img2 = document.getElementsByClassName("img2")[0];
+                var count = scroll().top+80;
+                animate1(img1,count);
+                animate1(img2,count);
+                var topImg = document.getElementsByClassName("top_img")[0];
+                    var height = scroll().top;
+                    if(height>1200){
+                        topImg.style.display = "block";
+                    }else{
+                        topImg.style.display = "none";
+                    }
+                topImg.onclick = function(){
+                        clearInterval(timer);
+                        var target = 0;//目标位置
+                        var leader = scroll().top;//显示区域自身位置
+                        var timer = setInterval(function(){
+                            var step = (target-leader)/10;
+                            step = step>0?Math.ceil(step):Math.floor(step);
+                            leader = leader + step;
+                            window.scrollTo(0,leader);
+                            if(leader === 0){
+                                clearInterval(timer);
+                            }
+                        },25)
+                    }
+            }
+        }
+    </script>
+</head>
+<body>
+<img class="top_img"src="images/Top.jpg"/>
+<img  class="img1" src="images/aside.jpg" alt="">
+<img  class="img2" src="images/aside.jpg" alt="">
+<div class="top" id="top"><img src="images/top.png" alt=""></div>
+<div  id="Q-nav1"><img src="images/nav.png" alt=""></div>
+<div class="main" id="main"><img src="images/main.png" alt=""></div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高原返回头部小火箭练习</title>
+    <style type="text/css">
+        img{
+            position:fixed;
+            bottom:100px;
+            right:50px;
+            cursor:pointer;
+            display:none;
+        }
+        div{
+            width: 1210px;
+            text-align:center;
+            margin:100px auto;
+            color:red;
+            font:500 26px/35px "simsun";
+        }
+    </style>
+    <script src="gaoyuan.js"></script>
+    <script>
+        window.onload = function(){
+            //需求1：当滑动距离大于一定值时，出现小火箭
+            //需求2：点击小火箭，页面返回到顶部
+            //步骤：获取img，和scrollTop值
+            var img = document.getElementsByTagName("img")[0];
+            //需求1：当滑动距离大于一定值时，出现小火箭
+            window.onscroll = function(){
+                var height = scroll().top;
+                if(height>1000){
+                    //当scrollyop大于某值，给img类名display；小于隐藏
+                    img.style.display = "block";
+                }else{
+                    img.style.display = "none";
+                }
+            //需求2：点击小火箭，页面返回到顶部
+            //技术点：window.scrollTo(0,0);跳转显示区域到指定坐标值
+            //技术难点：平时我们使用的封装函数animate1是移动盒子，但这个需要移动显示区域到顶部，而且显示区域位置不恒定，这个时候需要一个可以记录显示区域当前位置的一个计数器leader
+            img.onclick = function(){
+                clearInterval(timer);
+                var target = 0;//目标位置
+                var leader = scroll().top;//显示区域自身位置
+                var timer = setInterval(function(){
+                    var step = (target-leader)/10;
+                    step = step>0?Math.ceil(step):Math.floor(step);
+                    leader = leader + step;
+                    window.scrollTo(0,leader);
+                    if(leader === 0){
+                        clearInterval(timer);
+                    }
+                },25)
+            }
+            };
+        }
+    </script>
+</head>
+<body>
+<img src="images/Top.jpg"/>
+<div>
+    我是最顶端<br/>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+    风吹马尾千条线，雨打羊毛一片毡.....<br>
+</div>
+</body>
+</html>
